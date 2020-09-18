@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # How to
 
@@ -68,3 +69,6 @@ See the `/etc/docker/docker-compose.yml` file to see/change the endpoints
 ## Symfony
 
 - [https://symfony.com/doc/current/index.html](https://symfony.com/doc/current/index.html)
+=======
+# Test-technique
+>>>>>>> 2d5cd1a... Initial commit
