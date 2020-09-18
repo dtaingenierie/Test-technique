@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="form-container">
+    <div class="row">
+        <div class="input-container">
+            {{ form_label(form.firstname) }}
+            {{ form_errors(form.firstname) }}
+            {{ form_widget(form.firstname) }}
+        </div>
+        <div class="input-container">
+            {{ form_label(form.lastname) }}
+            {{ form_errors(form.lastname) }}
+            {{ form_widget(form.lastname) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-container">
+            {{ form_label(form.country) }}
+            {{ form_errors(form.country) }}
+            {{ form_widget(form.country) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-container">
+            {{ form_label(form.phonenumber) }}
+            {{ form_errors(form.phonenumber) }}
+            {{ form_widget(form.phonenumber) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body {
+        background-color: #f5f5f5;
+        font-family: Arial
+    }
+    .row {
+        display: flex;
+    }
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 400px;
+        width: 700px;
+        background-color: #fff;
+        margin: auto;
+    }
+    .input-container {
+        display: flex;
+
+        flex-direction: column;
+    }
+    .class-input {
+        padding: 0.7em;
+        border: 1px solid #e85711;
+        border-radius: 3px;
+    }
+    .class-label {
+        margin-bottom: 0.2em;
+    }
+    .class-error-input {
+        background: blue;
+        padding: 2em;
+        border: 1px solid orange;
+    }
+</style>
+{% endblock %}

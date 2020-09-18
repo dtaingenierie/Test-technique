@@ -13,10 +13,46 @@ class CustomerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname',TextType::class)
-            ->add('lastname',TextType::class)
-            ->add('country',TextType::class)
-            ->add('phonenumber',TextType::class)
+            ->add('firstname',TextType::class, [
+                'attr' => [
+                    'class' => 'class-input',
+                    'data-custom-error-css-class' => 'class-error-input',
+                ],
+                'label_attr' => [
+                    'class' => 'class-label',
+                    'data-custom-error-css-class' => 'class-error-label',
+                ]
+            ])
+            ->add('lastname',TextType::class, [
+                'attr' => [
+                    'class' => 'class-input',
+                    'data-custom-error-css-class' => 'class-error-input',
+                ],
+                'label_attr' => [
+                    'class' => 'class-label',
+                    'data-custom-error-css-class' => 'class-error-label',
+                ]
+            ])
+            ->add('country',TextType::class, [
+                'attr' => [
+                    'class' => 'class-input',
+                    'data-custom-error-css-class' => 'class-error-input',
+                ],
+                'label_attr' => [
+                    'class' => 'class-label',
+                    'data-custom-error-css-class' => 'class-error-label',
+                ]
+            ])
+            ->add('phonenumber',TextType::class, [
+                'attr' => [
+                    'class' => 'class-input',
+                    'data-custom-error-css-class' => 'class-error-input',
+                ],
+                'label_attr' => [
+                    'class' => 'class-label',
+                    'data-custom-error-css-class' => 'class-error-label',
+                ]
+            ])
             ->add('callme', SubmitType::class, ['label' => 'Call me']);
     }
 
