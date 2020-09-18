@@ -53,7 +53,12 @@ class CustomerType extends AbstractType
                     'data-custom-error-css-class' => 'class-error-label',
                 ]
             ])
-            ->add('callme', SubmitType::class, ['label' => 'Call me']);
+            ->add('callme', SubmitType::class, [
+                'label' => 'Call me',
+                'attr' => [
+                    'class' => 'class-button',
+                ]
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

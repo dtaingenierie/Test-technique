@@ -28,6 +28,11 @@
             {{ form_widget(form.phonenumber) }}
         </div>
     </div>
+    <div class="row">
+        <div class="input-container">
+            {{ form_widget(form.callme) }}
+        </div>
+    </div>
 </div>
 {% endblock %}
 
@@ -39,6 +44,8 @@
     }
     .row {
         display: flex;
+        justify-content: space-between;
+        margin: 10px 150px;
     }
     .form-container {
         display: flex;
@@ -51,8 +58,9 @@
     }
     .input-container {
         display: flex;
-
         flex-direction: column;
+        width: 100%;
+
     }
     .class-input {
         padding: 0.7em;
@@ -66,6 +74,16 @@
         background: blue;
         padding: 2em;
         border: 1px solid orange;
+    }
+    .class-button {
+        color: #fff;
+        background-color: #ed7941;
+        border: none;
+        padding: 0.7em;
+        border-radius: 2px;
+    }
+    .class-button:hover {
+        background-color: #e85711
     }
 </style>
 {% endblock %}
