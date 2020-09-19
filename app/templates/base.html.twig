@@ -3,10 +3,25 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <div
+        class="navbar"
+        style="
+            background-color: #fff;
+            height: 100px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0px 2px 7px #bdbdbd;
+            ">
+            <div style="width: 400px; margin: 10px;">{% include 'logo-stores-discount.svg.twig' %}</div>
+    </div>
+        {% block body %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

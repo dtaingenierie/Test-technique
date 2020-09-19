@@ -1,40 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{form(form)}}
-{# <div class="form-container">
-    <div class="row">
-        <div class="input-container">
-            {{ form_label(form.firstname) }}
-            {{ form_errors(form.firstname) }}
-            {{ form_widget(form.firstname) }}
+{# {{form(form)}} #}
+<form method="POST">
+    <div class="form-container">
+        <div class="row">
+            <div class="input-container">
+                {{ form_label(form.firstname) }}
+                {{ form_errors(form.firstname) }}
+                {{ form_widget(form.firstname) }}
+            </div>
+                <div class="space"></div>
+            <div class="input-container">
+                {{ form_label(form.lastname) }}
+                {{ form_errors(form.lastname) }}
+                {{ form_widget(form.lastname) }}
+            </div>
         </div>
-        <div class="input-container">
-            {{ form_label(form.lastname) }}
-            {{ form_errors(form.lastname) }}
-            {{ form_widget(form.lastname) }}
+        <div class="row">
+            <div class="input-container">
+                {{ form_label(form.country) }}
+                {{ form_errors(form.country) }}
+                {{ form_widget(form.country) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-container">
+                {{ form_label(form.phonenumber) }}
+                {{ form_errors(form.phonenumber) }}
+                {{ form_widget(form.phonenumber) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-container">
+                {{ form_widget(form.callme) }}
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="input-container">
-            {{ form_label(form.country) }}
-            {{ form_errors(form.country) }}
-            {{ form_widget(form.country) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-container">
-            {{ form_label(form.phonenumber) }}
-            {{ form_errors(form.phonenumber) }}
-            {{ form_widget(form.phonenumber) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="input-container">
-            {{ form_widget(form.callme) }}
-        </div>
-    </div>
-</div> #}
+</form>
 {% endblock %}
 
 {% block stylesheets %}
@@ -48,6 +51,9 @@
         justify-content: space-between;
         margin: 10px 150px;
     }
+    .space {
+        width: 15px;
+    }
     .form-container {
         display: flex;
         flex-direction: column;
@@ -56,6 +62,10 @@
         width: 700px;
         background-color: #fff;
         margin: auto;
+        margin-top: 150px;
+        border-radius: 2px;
+        box-shadow: 0px 2px 7px #bdbdbd;
+
     }
     .input-container {
         display: flex;
