@@ -1,3 +1,6 @@
 index:
     path: /
     controller: App\Controller\CustomerController::form
+success:
+    path: /success
+    controller: App\Controller\SuccessController:success
