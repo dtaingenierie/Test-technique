@@ -59,7 +59,7 @@ class CustomerController extends AbstractController
         if ($form->isSubmitted()) {
             if ($this->isValid($form->get('phonenumber')->getData(), $form->get('country')->getData())) {
                 var_dump('OK');
-                $this->redirectToRoute('/success');
+                return $this->redirectToRoute('success');
             } else {
                 var_dump('KO');
             }
