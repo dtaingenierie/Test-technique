@@ -21,8 +21,9 @@ class CustomerType extends AbstractType
                 'label_attr' => [
                     'class' => 'class-label',
                     'data-custom-error-css-class' => 'class-error-label',
-                ]
+                ],
             ])
+
             ->add('lastname',TextType::class, [
                 'attr' => [
                     'class' => 'class-input',
@@ -33,6 +34,7 @@ class CustomerType extends AbstractType
                     'data-custom-error-css-class' => 'class-error-label',
                 ]
             ])
+
             ->add('country',TextType::class, [
                 'attr' => [
                     'class' => 'class-input',
@@ -43,6 +45,7 @@ class CustomerType extends AbstractType
                     'data-custom-error-css-class' => 'class-error-label',
                 ]
             ])
+
             ->add('phonenumber',TextType::class, [
                 'attr' => [
                     'class' => 'class-input',
@@ -53,6 +56,7 @@ class CustomerType extends AbstractType
                     'data-custom-error-css-class' => 'class-error-label',
                 ]
             ])
+
             ->add('callme', SubmitType::class, [
                 'label' => 'Call me',
                 'attr' => [

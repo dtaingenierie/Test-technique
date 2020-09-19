@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="form-container">
+{{form(form)}}
+{# <div class="form-container">
     <div class="row">
         <div class="input-container">
             {{ form_label(form.firstname) }}
@@ -33,7 +34,7 @@
             {{ form_widget(form.callme) }}
         </div>
     </div>
-</div>
+</div> #}
 {% endblock %}
 
 {% block stylesheets %}

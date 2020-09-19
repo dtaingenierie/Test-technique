@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Form\Type\CustomerType;
-use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,10 +18,9 @@ class CustomerController extends AbstractController
         $this->client = $client;
     }
 
-    public function fetchNumberInfos(String $countryCode, String $phoneNumber): array {
-        $json = '[{"phoneNumber":"0659487512","countryCode":"FR"}]';
+    public function fetchNumberInfos(String $phoneNumber, String $countryCode) {
+        $json = '[{"phoneNumber":"'.$phoneNumber.'","countryCode":"'.$countryCode.'"}]';
         $obj = json_decode($json);
-
         $response = $this->client->request(
             'POST',
             'http://163.172.67.144:8042/api/v1/validate',
@@ -35,36 +33,37 @@ class CustomerController extends AbstractController
                 'body' => $json
             ]
         );
-
         $statusCode = $response->getStatusCode();
-        $content = $response->toArray();
-
-        return $content;
+        if ($statusCode == 200) {
+            return $response->toArray();
+        }
+        return null;
     }
 
-    public function form(): Response {
-        $res = $this->fetchNumberInfos('FR', '0652561932');
-        $content = $res[0];
-        $output = $content["output"];
-        var_dump($output["isValid"]);
-        return new Response(
-            '<html>
-                <body>
-                '.!$output["isValid"].'
-                </body>
-            </html>'
-        );
-    }
-    public function test(Request $request) {
+    public function isValid($phoneNumber, $country): bool {
 
-        $customer = new Customer();
-        $customer->setFirstName('John');
-        $customer->setLastName('Doe');
-        $customer->setPhoneNumber('0607082509');
-        $customer->setCountry('France');
+        $res = $this->fetchNumberInfos($phoneNumber, $country);
+        if ($res !== null) {
+            $content = $res[0];
+            $output = $content["output"];
+            return $output["isValid"];
+        }
+        return false;
+    }
+
+    public function form(Request $request) {
 
         $form = $this->createForm(CustomerType::class);
-
+        $form->handleRequest($request);
+        // $form->submit($form);
+        if ($form->isSubmitted()) {
+            if ($this->isValid($form->get('phonenumber')->getData(), $form->get('country')->getData())) {
+                var_dump('OK');
+                $this->redirectToRoute('/success');
+            } else {
+                var_dump('KO');
+            }
+        }
         return $this->render('customer/form.html.twig', [
             'form' => $form->createView(),
         ]);
