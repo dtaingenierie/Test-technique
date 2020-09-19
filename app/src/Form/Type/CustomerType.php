@@ -2,11 +2,14 @@
 namespace App\Form\Type;
 
 use App\Entity\Customer;
+use App\Entity\Countries;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Intl\Locales;
 
 class CustomerType extends AbstractType
 {
@@ -35,14 +38,10 @@ class CustomerType extends AbstractType
                 ]
             ])
 
-            ->add('country',TextType::class, [
-                'attr' => [
-                    'class' => 'class-input',
-                    'data-custom-error-css-class' => 'class-error-input',
-                ],
-                'label_attr' => [
-                    'class' => 'class-label',
-                    'data-custom-error-css-class' => 'class-error-label',
+            ->add('country',ChoiceType::class, [
+                'placeholder' => 'Choose an option',
+                'choices' => [
+                    Countries::getCountries()
                 ]
             ])
 

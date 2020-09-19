@@ -61,7 +61,7 @@ class CustomerController extends AbstractController
                 var_dump('OK');
                 return $this->redirectToRoute('success');
             } else {
-                var_dump('KO');
+                var_dump($form->get('country')->getData());
             }
         }
         return $this->render('customer/form.html.twig', [
