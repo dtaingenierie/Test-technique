@@ -25,6 +25,7 @@ class CustomerType extends AbstractType
                     'class' => 'class-label',
                     'data-custom-error-css-class' => 'class-error-label',
                 ],
+                'label' => 'First name',
             ])
 
             ->add('lastname',TextType::class, [
@@ -35,14 +36,20 @@ class CustomerType extends AbstractType
                 'label_attr' => [
                     'class' => 'class-label',
                     'data-custom-error-css-class' => 'class-error-label',
-                ]
+                ],
+                'label' => 'Last name'
             ])
 
             ->add('country',ChoiceType::class, [
-                'placeholder' => 'Choose an option',
+                'placeholder' => 'Select country',
                 'choices' => [
                     Countries::getCountries()
-                ]
+                ],
+                'attr' => [
+                    'class' => 'class-input',
+                    'data-custom-error-css-class' => 'class-error-input',
+                ],
+                'label' => 'Country'
             ])
 
             ->add('phonenumber',TextType::class, [
@@ -53,7 +60,8 @@ class CustomerType extends AbstractType
                 'label_attr' => [
                     'class' => 'class-label',
                     'data-custom-error-css-class' => 'class-error-label',
-                ]
+                ],
+                'label' => 'Phone number'
             ])
 
             ->add('callme', SubmitType::class, [
