@@ -4,6 +4,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    phone.valid.user: '%env(PHONE_VALID_USER)%'
+    phone.valid.password: '%env(PHONE_VALID_PASSWORD)%'
+    phone.valid.url: '%env(PHONE_VALID_URL)%'
 
 services:
     # default configuration for services in *this* file

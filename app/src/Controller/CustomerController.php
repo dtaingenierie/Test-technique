@@ -14,9 +14,6 @@ class CustomerController extends AbstractController
 {
     private $client;
     private $errors = ['firstname' => false, 'lastname' => false, 'phonenumber' => false];
-    private $username = 'username';
-    private $pwd = 'password';
-    private $url = 'url';
 
     public function __construct(HttpClientInterface $client)
     {
@@ -25,12 +22,11 @@ class CustomerController extends AbstractController
 
     public function fetchNumberInfos(String $phoneNumber, String $countryCode) {
         $json = '[{"phoneNumber":"'.$phoneNumber.'","countryCode":"'.$countryCode.'"}]';
-        $obj = json_decode($json);
         $response = $this->client->request(
             'POST',
-            $this->url,
+            $this->getParameter('phone.valid.url'),
             [
-                'auth_basic' => [$this->username, $this->pwd],
+                'auth_basic' => [$this->getParameter('phone.valid.user'), $this->getParameter('phone.valid.password')],
                 'headers' => [
                     'accept' => 'application/json',
                     'Content-Type' => 'application/json',
