@@ -8,12 +8,18 @@
                 {{ form_label(form.firstname) }}
                 {{ form_errors(form.firstname) }}
                 {{ form_widget(form.firstname) }}
+                {% if errors.firstname %}
+                    <div class="error">Invalid name, too short or contains numbers</div>
+                {% endif %}
             </div>
                 <div class="space"></div>
             <div class="input-container">
                 {{ form_label(form.lastname) }}
                 {{ form_errors(form.lastname) }}
                 {{ form_widget(form.lastname) }}
+                {% if errors.lastname %}
+                    <div class="error">Invalid name, too short or contains numbers</div>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -28,6 +34,9 @@
                 {{ form_label(form.phonenumber) }}
                 {{ form_errors(form.phonenumber) }}
                 {{ form_widget(form.phonenumber) }}
+                {% if errors.phonenumber %}
+                    <div class="error">Invalid phone number</div>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -70,7 +79,6 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-
     }
     .class-input {
         padding: 0.7em;
@@ -94,6 +102,10 @@
     }
     .class-button:hover {
         background-color: #e85711
+    }
+    .error {
+        color: red;
+        font-size: 12px;
     }
 </style>
 {% endblock %}
