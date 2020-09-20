@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1 class="success">Success !</h1>
+    <div class="success">
+        <p class="success-message">Your phone number has been registered !</p>
+    </div>
 {% endblock %}
 
 {% block stylesheets %}
@@ -10,7 +12,15 @@
             font-family: Arial;
         }
         .success {
-            margin-top: 120px;
+            background-color: #a5d6a7;
+            padding: 5px;
+            margin: 25px;
+            border: 1px solid #81c784;
+            border-radius: 2px;
+        }
+        .success-message {
+            text-align: center;
+            color: #1b5e20;
         }
     </style>
 {% endblock %}
