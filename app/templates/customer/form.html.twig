@@ -44,6 +44,11 @@
                 {{ form_widget(form.callme) }}
             </div>
         </div>
+        {% if errors.creating %}
+            <div class="row">
+                <div class="error">Unable to create user, please retry later...</div>
+            </div>
+        {% endif %}
     </div>
 </form>
 {% endblock %}

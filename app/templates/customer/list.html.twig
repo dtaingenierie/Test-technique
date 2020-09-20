@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="tab">
+    {% if customers %}
         <table>
             <thead>
                 <tr>
@@ -41,6 +42,11 @@
                     </tr>
             </tbody>
         </table>
+        {% else %}
+            <div class="nodata">
+                There is no customers.
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
 
@@ -67,6 +73,13 @@
         }
         .row {
             background-color: #efefef;
+        }
+        .nodata {
+            color: #616161;
+            margin-top: 12px;
+            font-size: 16px;
+            text-align: center;
+
         }
     </style>
 {% endblock %}

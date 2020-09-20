@@ -11,7 +11,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class CustomerController extends AbstractController
 {
     private $client;
-    private $errors = ['firstname' => false, 'lastname' => false, 'phonenumber' => false];
+    private $errors = ['firstname' => false, 'lastname' => false, 'phonenumber' => false, 'creating' => false];
 
     public function __construct(HttpClientInterface $client)
     {
@@ -25,7 +25,7 @@ class CustomerController extends AbstractController
             $entityManager->persist($customer);
             $entityManager->flush();
         } catch (\Exception $e) {
-
+            $this->errors['creating'] = true;
         }
     }
 
@@ -99,7 +99,7 @@ class CustomerController extends AbstractController
         $form = $this->createForm(CustomerType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
-            if ($this->isFormValid($form) && $this->isNumberValid($form)) {
+            if ($this->isFormValid($form) && $this->isNumberValid($form) && $this->errors['creating'] == false) {
                 return $this->redirectToRoute('success');
             }
         }
