@@ -54,7 +54,7 @@ docker ps
 - Symfony: http://localhost:8000
 - MariaDB: mysql://${MARIADB_USER}:${MARIADB_PASSWORD}@${MARIADB_HOST}:${MARIADB_PORT_NUMBER}/${MARIADB_DATABASE}?serverVersion=5.7
 - Don't forget to configurate the .env file with the Api configuraton
-See the `/etc/docker/docker-compose.yml` file to see/change the endpoints
+- See the `/etc/docker/docker-compose.yml` file to see/change the endpoints
 
 -----
 
