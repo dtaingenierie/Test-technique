@@ -6,8 +6,6 @@ use App\Entity\Customer;
 use App\Form\Type\CustomerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class CustomerController extends AbstractController
@@ -18,6 +16,17 @@ class CustomerController extends AbstractController
     public function __construct(HttpClientInterface $client)
     {
         $this->client = $client;
+    }
+
+    public function createCustomer(Customer $customer) {
+        // Doesn't work "An exception occurred in driver: SQLSTATE[HY000] [2002] No such file or directory"
+        try {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($customer);
+            $entityManager->flush();
+        } catch (\Exception $e) {
+
+        }
     }
 
     public function fetchNumberInfos(String $phoneNumber, String $countryCode) {
@@ -55,8 +64,11 @@ class CustomerController extends AbstractController
 
     }
 
-    public function isNumberValid($phoneNumber, $country): bool {
-
+    public function isNumberValid($form): bool {
+        $country = $form->get('country')->getData();
+        $phoneNumber = $form->get('phonenumber')->getData();
+        $firstName = $form->get('firstname')->getData();
+        $lastName = $form->get('lastname')->getData();
         if (preg_match('/[^0-9]/', $phoneNumber)) {
             var_dump("KO");
             $this->errors['phonenumber'] = true;
@@ -68,6 +80,15 @@ class CustomerController extends AbstractController
             $content = $res[0];
             $output = $content["output"];
             $this->errors['phonenumber'] = !$output["isValid"];
+            if ($output["isValid"]) {
+                $customer = new Customer();
+                $customer->setFirstName($firstName);
+                $customer->setLastName($lastName);
+                $customer->setCountry($output["country"]);
+                $customer->setPhoneNumber($output["national"]);
+                $customer->setInternational($output["international"]);
+                $this->createCustomer($customer);
+            }
             return $output["isValid"];
         }
         return false;
@@ -78,7 +99,7 @@ class CustomerController extends AbstractController
         $form = $this->createForm(CustomerType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
-            if ($this->isFormValid($form) && $this->isNumberValid($form->get('phonenumber')->getData(), $form->get('country')->getData())) {
+            if ($this->isFormValid($form) && $this->isNumberValid($form)) {
                 return $this->redirectToRoute('success');
             }
         }

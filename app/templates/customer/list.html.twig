@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="tab">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Country</th>
+                    <th>Phone number national</th>
+                    <th>Phone number international</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                    <tr>
+                        <td>{{customer.id}}</td>
+                        <td>{{customer.firstname}}</td>
+                        <td>{{customer.lastname}}</td>
+                        <td>{{customer.counrty}}</td>
+                        <td>{{customer.phonenumber}}</td>
+                        <td>{{customer.international}}</td>
+                    </tr>
+                {% endfor %}
+                    <tr class="row">
+                        <td>1</td>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>FR</td>
+                        <td>06 52 56 19 32</td>
+                        <td>+33 6 52 56 19 32</td>
+                    </tr>
+                    <tr class="row">
+                        <td>1</td>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>FR</td>
+                        <td>06 52 56 19 32</td>
+                        <td>+33 6 52 56 19 32</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial;
+        }
+        table {
+            margin: auto;
+            border-spacing: 0px;
+            margin-top: 20px;
+            box-shadow: 0px 2px 7px #bdbdbd;
+
+        }
+        thead {
+            background-color: #ed7941;
+            border-radius: 2px;
+            color: #efefef;
+        }
+        td, th {
+            padding: 10px;
+        }
+        .row {
+            background-color: #efefef;
+        }
+    </style>
+{% endblock %}
+
