@@ -42,9 +42,7 @@ class CustomerType extends AbstractType
 
             ->add('country',ChoiceType::class, [
                 'placeholder' => 'Select country',
-                'choices' => [
-                    Countries::getCountries()
-                ],
+                'choices' => Countries::getCountries(),
                 'attr' => [
                     'class' => 'class-input',
                     'data-custom-error-css-class' => 'class-error-input',
