@@ -17,7 +17,7 @@ framework:
     http_client:
         scoped_clients:
             example_api:
-                base_uri: 'http://163.172.67.144:8042/api/v1/validate'
+                base_uri: '%env(PHONE_VALID_URL)%'
 
                 # HTTP Basic authentication
-                auth_basic: 'api:azpihviyazfb'
+                auth_basic: '%env(PHONE_VALID_USER)%:%env(PHONE_VALID_PASSWORD)%'

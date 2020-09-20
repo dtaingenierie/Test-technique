@@ -4,7 +4,7 @@
 ## Install
 
 ```bash
-docker-compose -f etc/docker/docker-compose.yml up -d 
+docker-compose -f etc/docker/docker-compose.yml up -d
 docker exec -ti docker_app_1 bash -c "cd app && composer update"
 docker exec -ti docker_app_1 bash -c "cd app && php bin/console cache:clear --env=prod && php bin/console cache:clear --env=dev"
 ```
@@ -34,7 +34,7 @@ php bin/console *******
 ## See logs
 
 ```bash
-docker logs -f docker_app_1 
+docker logs -f docker_app_1
 ```
 
 -----
@@ -53,7 +53,7 @@ docker ps
 
 - Symfony: http://localhost:8000
 - MariaDB: mysql://${MARIADB_USER}:${MARIADB_PASSWORD}@${MARIADB_HOST}:${MARIADB_PORT_NUMBER}/${MARIADB_DATABASE}?serverVersion=5.7
-
+- Don't forget to configurate the .env file with the Api configuraton
 See the `/etc/docker/docker-compose.yml` file to see/change the endpoints
 
 -----
