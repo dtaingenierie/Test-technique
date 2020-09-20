@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="tab">
+        <table>
+            <thead>
+                <tr>ID</tr>
+                <tr>First name</tr>
+                <tr>Last name</tr>
+                <tr>Country</tr>
+                <tr>Phone number national</tr>
+                <tr>Phone number international</tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                    <tr>{{customer.id}}</tr>
+                    <tr>{{customer.firstname}}</tr>
+                    <tr>{{customer.lastname}}</tr>
+                    <tr>{{customer.counrty}}</tr>
+                    <tr>{{customer.phonenumber}}</tr>
+                    <tr>{{customer.international}}</tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial;
+        }
+    </style>
+{% endblock %}
+

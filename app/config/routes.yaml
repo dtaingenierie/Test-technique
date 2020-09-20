@@ -4,3 +4,6 @@ index:
 success:
     path: /success
     controller: App\Controller\SuccessController:success
+list:
+    path: /list
+    controller: App\Controller\ListController:list
