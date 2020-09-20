@@ -9,7 +9,7 @@ services:
       - '../../.:/app'
     environment:
       - SYMFONY_PROJECT_NAME=app
-      - MARIADB_HOST=mariadb
+      - MARIADB_HOST=localhost
       - MARIADB_PORT_NUMBER=3306
       - MARIADB_USER=symfony
       - MARIADB_PASSWORD=5ymF0n1

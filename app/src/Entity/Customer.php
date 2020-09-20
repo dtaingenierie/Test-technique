@@ -2,11 +2,42 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\CustomerRepository")
+ */
 class Customer {
-    protected $firstname;
-    protected $lastname;
-    protected $country;
-    protected $phonenumber;
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+    /**
+     * @ORM\Column(type="string", length=2)
+     */
+    private $country;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $phonenumber;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $international;
+
+    public function getId() {
+        return $this->id;
+    }
 
     public function getFirstName() {
         return $this->firstname;
@@ -38,5 +69,13 @@ class Customer {
 
     public function setPhoneNumber($phonenumber) {
         $this->phonenumber = $phonenumber;
+    }
+
+    public function getInternational() {
+        return $this->international;
+    }
+
+    public function setInternational($international) {
+        $this->international = $international;
     }
 }

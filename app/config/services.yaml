@@ -7,6 +7,11 @@ parameters:
     phone.valid.user: '%env(PHONE_VALID_USER)%'
     phone.valid.password: '%env(PHONE_VALID_PASSWORD)%'
     phone.valid.url: '%env(PHONE_VALID_URL)%'
+    DATABASE_HOST: '%env(MARIADB_HOST)%'
+    DATABASE_USER: '%env(MARIADB_USER)%'
+    DATABASE_PASSWORD: '%env(MARIADB_PASSWORD)%'
+    DATABASE_DRIVER: 'pdo_mysql'
+
 
 services:
     # default configuration for services in *this* file
